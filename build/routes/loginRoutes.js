@@ -51,3 +51,8 @@ router.post('/login', (req, res) => {
         res.send('Invalid email or password');
     }
 });
+// 230 Log Out
+router.get('/logout', (req, res) => {
+    req.session = undefined;
+    res.redirect('/');
+});
