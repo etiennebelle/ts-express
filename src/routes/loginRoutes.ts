@@ -5,6 +5,7 @@ interface RequestWithBody extends Request{
 }
 
 // 231 Protected Routes
+// Logged In Middleware
 function requireAuth(req: Request, res: Response, next: NextFunction): void {
     if (req.session && req.session.loggedIn) {
         next()

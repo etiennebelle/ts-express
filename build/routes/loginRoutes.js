@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = require("express");
 // 231 Protected Routes
+// Logged In Middleware
 function requireAuth(req, res, next) {
     if (req.session && req.session.loggedIn) {
         next();
