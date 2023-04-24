@@ -4,6 +4,26 @@ exports.router = void 0;
 const express_1 = require("express");
 const router = (0, express_1.Router)();
 exports.router = router;
+router.get('/', (req, res) => {
+    // Look at req.session property
+    // First look if this user has a session && if he's logged in
+    if (req.session && req.session.loggedIn) {
+        res.send(`
+        <div>
+            <div>You are logged in</div>
+            <a href="/logout">Logout</a>
+        </div>
+        `);
+    }
+    else {
+        res.send(`
+        <div>
+            <div>You need to log in</div>
+            <a href="/login">Login</a>
+        </div>
+        `);
+    }
+});
 router.get('/login', (req, res) => {
     res.send(`
         <form method='POST'>

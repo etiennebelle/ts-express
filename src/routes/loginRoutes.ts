@@ -6,6 +6,26 @@ interface RequestWithBody extends Request{
 
 const router = Router();
 
+router.get('/', (req: Request, res: Response) => {
+    // Look at req.session property
+    // First look if this user has a session && if he's logged in
+    if (req.session && req.session.loggedIn) {
+        res.send(`
+        <div>
+            <div>You are logged in</div>
+            <a href="/logout">Logout</a>
+        </div>
+        `)
+    } else {
+        res.send(`
+        <div>
+            <div>You need to log in</div>
+            <a href="/login">Login</a>
+        </div>
+        `)
+    }
+})
+
 router.get('/login', (req: Request, res: Response) => {
     res.send(`
         <form method='POST'>
